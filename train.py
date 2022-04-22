@@ -42,4 +42,4 @@ print(pipe.score(x_test,y_test))
 from sklearn2pmml import sklearn2pmml
 sklearn2pmml(pipe,'model/gbdt.pmml',with_repr=True)
 
-
+# save model using other 

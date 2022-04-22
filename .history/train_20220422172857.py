@@ -22,9 +22,11 @@ y = iris.target
 # Training and Testing split
 x_train,x_test,y_train,y_test = train_test_split(X,y,test_size=0.3,random_state=10)
 
-# pipeline
+# pipeline:must use PMMLpipeline
+from sklearn2pmml.pipeline import PMMLPipeline
+
 classfier = GradientBoostingClassifier(random_state=10)
-pipe = Pipeline([('Standar',StandardScaler()),('Classfier',classfier)])
+pipe = PMMLPipeline([('Standar',StandardScaler()),('Classfier',classfier)])
 
 # fit
 pipe.fit(x_train,y_train)
@@ -38,6 +40,6 @@ print(pipe.score(x_test,y_test))
 
 # save pmml
 from sklearn2pmml import sklearn2pmml
-sklearn2pmml(pipe,'gbdt.pmml',with_repr=True)
+sklearn2pmml(pipe,'model/gbdt.pmml',with_repr=True)
 
-
+# save model using other 
